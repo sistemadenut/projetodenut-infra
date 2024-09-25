@@ -1,1 +1,0 @@
-# projetodenut-infra
