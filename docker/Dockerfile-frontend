@@ -1,0 +1,25 @@
+# Dockerfile-frontend
+
+# Use a imagem base do Node.js
+FROM node:20-alpine
+
+# Cria o diretório da aplicação
+WORKDIR /app
+
+# Instala a CLI do Vue globalmente e `serve`
+RUN yarn global add @vue/cli serve
+
+# Cria um novo projeto Vue (substitua 'my-project' pelo nome do seu projeto)
+RUN vue create projeto-denut-frontend --default
+
+# Define o diretório de trabalho para o novo projeto
+WORKDIR /app/projeto-denut-frontend
+
+# Instala as dependências do projeto Vue
+RUN yarn install
+
+# Expõe a porta onde o Vue será servido
+EXPOSE 8080
+
+# Comando para iniciar o servidor de desenvolvimento do Vue
+CMD ["yarn", "serve"]
